@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<!-- saved from url=(0074)file:///Users/bennettmccoy/Downloads/constitutional_convention_budget.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Our Constitutional Convention Budget</title>
+<style>
+  :root { color-scheme: light; --ink:#202a35; --muted:#596575; --line:#d7dee7; --panel:#f4f7fa; --accent:#254e70; }
+  * { box-sizing: border-box; }
+  body { margin:0; padding:24px 14px 40px; font-family:Arial,Helvetica,sans-serif; color:var(--ink); background:#eef2f6; line-height:1.45; }
+  main { max-width:760px; margin:0 auto; background:white; border:1px solid var(--line); border-radius:16px; padding:clamp(18px,4vw,32px); box-shadow:0 4px 18px rgba(20,40,60,.07); }
+  h1 { margin:0 0 8px; font-size:clamp(1.55rem,4vw,2.1rem); line-height:1.15; }
+  .intro { color:var(--muted); margin:0 0 22px; }
+  .counter { display:flex; justify-content:space-between; align-items:center; gap:12px; background:var(--panel); border-radius:12px; padding:14px 16px; margin:18px 0 20px; }
+  .counter strong { font-size:1.35rem; font-variant-numeric:tabular-nums; }
+  .status { font-size:.92rem; color:var(--muted); }
+  .priority { border:1px solid var(--line); border-radius:12px; padding:16px; margin:12px 0; }
+  .priority h2 { font-size:1.08rem; margin:0 0 4px; }
+  .priority p { margin:0 0 12px; color:var(--muted); font-size:.95rem; }
+  .controls { display:flex; align-items:center; gap:12px; }
+  button { cursor:pointer; border:1px solid #aebdca; background:white; color:var(--ink); border-radius:9px; min-width:44px; min-height:44px; font-size:1.25rem; font-weight:700; }
+  button:disabled { opacity:.35; cursor:not-allowed; }
+  .points { flex:1; text-align:center; background:var(--panel); border-radius:9px; padding:7px; font-size:1.1rem; font-weight:700; font-variant-numeric:tabular-nums; }
+  label { display:block; font-weight:700; margin:18px 0 7px; }
+  textarea { display:block; width:100%; min-height:76px; padding:11px; border:1px solid #b8c4d0; border-radius:9px; font:inherit; resize:vertical; }
+  .primary { width:100%; margin-top:16px; background:var(--accent); color:white; border-color:var(--accent); font-size:1rem; padding:12px 16px; }
+  .note { font-size:.86rem; color:var(--muted); margin-top:14px; }
+  .error { color:#9c2f2f; font-weight:700; }
+  @media (max-width:480px) { body { padding:10px 8px 24px; } main { border-radius:12px; } .priority { padding:13px; } }
+</style>
+</head>
+<body>
+<main>
+  <h1>Our Constitutional Convention Budget</h1>
+  <p class="intro">Imagine you are a delegate at the Constitutional Convention in 1787. You have <strong>10 influence points</strong> to spend on the priorities you believe are most important for the new Constitution. Give more points to the priorities that matter most, but use exactly 10 points total.</p>
+  <div class="counter" aria-live="polite">
+    <div><strong>Points allocated</strong><div class="status" id="status">All 10 points allocated.</div></div>
+    <strong id="total">10 / 10</strong>
+  </div>
+  <section id="priorities">
+    <div class="priority" data-index="0">
+      <h2>1. Representation based on population</h2>
+      <p>Larger states receive more seats in Congress.</p>
+      <div class="controls"><button type="button" class="minus" aria-label="Remove a point from representation based on population">−</button><div class="points" aria-label="Points allocated">1 point</div><button type="button" class="plus" aria-label="Add a point to representation based on population" disabled="">+</button></div>
+    </div>
+    <div class="priority" data-index="1">
+      <h2>2. Equal state representation</h2>
+      <p>Every state receives equal representation in Congress.</p>
+      <div class="controls"><button type="button" class="minus" aria-label="Remove a point from equal state representation">−</button><div class="points" aria-label="Points allocated">3 points</div><button type="button" class="plus" aria-label="Add a point to equal state representation" disabled="">+</button></div>
+    </div>
+    <div class="priority" data-index="2">
+      <h2>3. A stronger national government</h2>
+      <p>Congress can tax and regulate interstate commerce.</p>
+      <div class="controls"><button type="button" class="minus" aria-label="Remove a point from a stronger national government">−</button><div class="points" aria-label="Points allocated">2 points</div><button type="button" class="plus" aria-label="Add a point to a stronger national government" disabled="">+</button></div>
+    </div>
+    <div class="priority" data-index="3">
+      <h2>4. Limits on executive power</h2>
+      <p>Checks and balances prevent the president from becoming too powerful.</p>
+      <div class="controls"><button type="button" class="minus" aria-label="Remove a point from limits on executive power">−</button><div class="points" aria-label="Points allocated">2 points</div><button type="button" class="plus" aria-label="Add a point to limits on executive power" disabled="">+</button></div>
+    </div>
+    <div class="priority" data-index="4">
+      <h2>5. Explicit protections for individual liberties</h2>
+      <p>Add a Bill of Rights to protect individual freedoms.</p>
+      <div class="controls"><button type="button" class="minus" aria-label="Remove a point from protections for individual liberties">−</button><div class="points" aria-label="Points allocated">2 points</div><button type="button" class="plus" aria-label="Add a point to protections for individual liberties" disabled="">+</button></div>
+    </div>
+  </section>
+  <label for="q1">Reflection 1: Which priority received the most points, and why?</label>
+  <textarea id="q1" placeholder="My highest priority was... because..."></textarea>
+  <label for="q2">Reflection 2: Which priority was hardest to compromise on, and why?</label>
+  <textarea id="q2" placeholder="The hardest priority to compromise on was..."></textarea>
+  <button type="button" class="primary" id="copy">Copy my choices and reflections</button>
+  <p class="note" id="message" aria-live="polite">When finished, copy your responses and paste them into your Canvas assignment. This page does not automatically send or save your answers to your teacher.</p>
+</main>
+<script>
+(function () {
+  const cards = Array.from(document.querySelectorAll('.priority'));
+  const totalEl = document.getElementById('total');
+  const statusEl = document.getElementById('status');
+  const messageEl = document.getElementById('message');
+  const titles = cards.map(card => card.querySelector('h2').textContent);
+  let values = [1, 3, 2, 2, 2];
+  function total() { return values.reduce((sum, value) => sum + value, 0); }
+  function render() {
+    const sum = total();
+    totalEl.textContent = sum + ' / 10';
+    statusEl.textContent = sum === 10 ? 'All 10 points allocated.' : 'Allocate ' + (10 - sum) + ' more point' + (10 - sum === 1 ? '' : 's') + '.';
+    statusEl.className = sum === 10 ? 'status' : 'status error';
+    cards.forEach((card, i) => {
+      card.querySelector('.points').textContent = values[i] + (values[i] === 1 ? ' point' : ' points');
+      card.querySelector('.minus').disabled = values[i] <= 0;
+      card.querySelector('.plus').disabled = sum >= 10;
+    });
+  }
+  cards.forEach((card, i) => {
+    card.querySelector('.minus').addEventListener('click', () => {
+      if (values[i] > 0) values[i]--;
+      render();
+    });
+    card.querySelector('.plus').addEventListener('click', () => {
+      if (total() < 10) values[i]++;
+      render();
+    });
+  });
+  document.getElementById('copy').addEventListener('click', async () => {
+    if (total() !== 10) {
+      messageEl.textContent = 'Please allocate exactly 10 points before copying your responses.';
+      messageEl.className = 'note error';
+      return;
+    }
+    const output = 'Our Constitutional Convention Budget\n\n' +
+      titles.map((title, i) => title + ': ' + values[i] + (values[i] === 1 ? ' point' : ' points')).join('\n') +
+      '\n\nReflection 1: ' + (document.getElementById('q1').value.trim() || '(not answered)') +
+      '\n\nReflection 2: ' + (document.getElementById('q2').value.trim() || '(not answered)');
+    try {
+      await navigator.clipboard.writeText(output);
+      messageEl.textContent = 'Copied! Paste your choices and reflections into your Canvas assignment.';
+      messageEl.className = 'note';
+    } catch (e) {
+      const area = document.createElement('textarea');
+      area.value = output;
+      area.style.position = 'fixed'; area.style.opacity = '0';
+      document.body.appendChild(area); area.select();
+      const ok = document.execCommand('copy'); area.remove();
+      messageEl.textContent = ok ? 'Copied! Paste your choices and reflections into your Canvas assignment.' : 'Copy did not work automatically. Please select and copy your responses manually.';
+      messageEl.className = ok ? 'note' : 'note error';
+    }
+  });
+  render();
+})();
+</script>
+
+
+</body></html>
